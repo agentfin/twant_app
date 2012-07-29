@@ -8,9 +8,14 @@ describe "Static pages" do
       page.should have_selector('h1', :text => 'TwantApp' )
     end
   
-    it "should have the title 'Home'" do
+    it "should have a base title" do
       visit '/static_pages/home'
-      page.should have_selector( 'title', :text => "TwantApp | Home" )
+      page.should have_selector( 'title', :text => "TwantApp" )
+    end
+    
+    it "should not have a custome page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector( 'title', :text => "| Home" )
     end
   end
   
@@ -20,10 +25,16 @@ describe "Static pages" do
       page.should have_selector( 'h1', :text => 'HALP!' )
     end
     
-    it "should have the title 'HALP!'" do
+    it "should have a base title" do
       visit '/static_pages/help'
-      page.should have_selector( 'title', :text => "TwantApp | HALP!" )
+      page.should have_selector( 'title', :text => "TwantApp" )
     end
+    
+    it "should not have a custom page title" do
+      visit '/static_pages/help'
+      page.should_not have_selector( 'title', :text => "| HALP!" )
+    end
+    
   end
   
   describe "About page" do
@@ -32,9 +43,9 @@ describe "Static pages" do
       page.should have_selector('h1', :text => 'About Us')
     end
     
-    it "should have the title 'About Us'" do
+    it "should have a base title" do
       visit '/static_pages/about'
-      page.should have_selector( 'title', :text => "TwantApp | About Us" )
+      page.should have_selector( 'title', :text => "TwantApp" )
     end
   end
   
@@ -44,9 +55,14 @@ describe "Static pages" do
       page.should have_selector('h1', :text => 'Contact...' )
     end
     
-    it "should have the title 'Contact...'" do
+    it "should have a base title" do
       visit '/static_pages/contact'
-      page.should have_selector( 'title', :text => "TwantApp | Contact..." )
+      page.should have_selector( 'title', :text => "TwantApp" )
+    end
+    
+    it "should not have a custom page title" do
+      visit '/static_pages/help'
+      page.should_not have_selector( 'title', :text => "| Contact..." )
     end
   end
   
