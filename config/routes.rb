@@ -1,13 +1,27 @@
 TwantApp::Application.routes.draw do
-  get "static_pages/home"
+  get "users/new"
 
-  get "static_pages/help"
-
-  get "static_pages/about"
-  
-  get "static_pages/contact"
+  root to: 'static_pages#home'
+  match '/halp', to: 'static_pages#halp'
+  match '/about', to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+  match '/getsome', to: 'users#new'
 
 end
+
+# 
+# Page  URI Named route
+# Home  / root_path
+# About /about  about_path
+# HALP!  /HALP halp_path
+# Contact... /contact  contact_path
+# Get some /getsome getsome_path
+# Speak friend /speakfriend speakfriend_path
+
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
